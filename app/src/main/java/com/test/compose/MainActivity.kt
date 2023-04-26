@@ -2,6 +2,7 @@ package com.test.compose
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -44,6 +45,15 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            navigation.changeCurrentPage(PageName.FIRSTPAGE)
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+
     }
 }
 

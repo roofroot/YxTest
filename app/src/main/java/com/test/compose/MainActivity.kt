@@ -1,11 +1,9 @@
 package com.test.compose
 
 import android.annotation.SuppressLint
-import android.graphics.pdf.PdfDocument.Page
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface

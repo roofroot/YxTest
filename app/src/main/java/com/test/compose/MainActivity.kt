@@ -1,7 +1,6 @@
 package com.test.compose
 
 import android.os.Bundle
-import android.security.identity.NoAuthenticationKeyAvailableException
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize

@@ -1,8 +1,11 @@
 package com.test.compose
 
+import android.annotation.SuppressLint
+import android.graphics.pdf.PdfDocument.Page
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -17,24 +20,28 @@ class MainActivity : ComponentActivity() {
         var navigation: Navigation = Navigation()
     }
 
+    @SuppressLint("UnusedCrossfadeTargetStateParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         navigation.changeCurrentPage(PageName.FIRSTPAGE)
-        setContent {
-            ComposetestTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    val data = ArrayList<String>()
-                    when (navigation.currentPage.value) {
-                        PageName.FIRSTPAGE -> {
-                            FristPage(data)
+        val data = ArrayList<String>()
+        navigation.currentPage.observe(this@MainActivity) {
+            setContent {
+                ComposetestTheme {
+                    // A surface container using the 'background' color from the theme
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        when (it) {
+                            PageName.FIRSTPAGE -> {
+                                FristPage(data)
+                            }
+                            PageName.SECONDPAGE -> {
+                                SecondPage(list = data)
+                            }
                         }
-                        PageName.SECONDPAGE -> {
-                            SecondPage(list = data)
-                        }
+
                     }
                 }
             }

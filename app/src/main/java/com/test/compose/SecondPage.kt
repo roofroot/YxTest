@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.input.key.Key.Companion.I
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import com.test.compose.ui.theme.bgColor
 
 /**
  * coco man
@@ -31,17 +33,21 @@ fun SecondPage(list:List<String>) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(bgColor)
     ) {
         for(i in list){
-            Text(text = i,
-                Modifier
-                    .wrapContentWidth()
-                    .height(20.dp)
-                    .background(Color.White)
-                    .clickable {
+            Box(Modifier.padding(10.dp).background(Color.White).background(Color.White, shape = RoundedCornerShape(10.dp))) {
+                Text(text = i,
+                    Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(10.dp)
+                        .background(Color.White)
+                        .clickable {
 
-                    })
+                        })
+            }
+
         }
     }
 
